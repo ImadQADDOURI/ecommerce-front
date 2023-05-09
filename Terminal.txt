@@ -1,3 +1,9 @@
  yarn create next-app .
 
- 
+  yarn add dotenv 
+
+ yarn add styled-components
+
+
+
+ yarn add mongoose
