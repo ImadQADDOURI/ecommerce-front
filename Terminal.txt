@@ -14,3 +14,8 @@
 
     > yarn add micro
     
+
+
+    
+    > yarn add next-auth
+    > yarn add next-auth @next-auth/mongodb-adapter mongodb

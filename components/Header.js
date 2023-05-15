@@ -5,6 +5,9 @@ import {useContext, useState} from "react";
 import {CartContext} from "@/components/CartContext";
 import BarsIcon from "@/components/icons/Bars";
 
+import { useSession, signIn, signOut } from "next-auth/react";
+
+
 const StyledHeader = styled.header`
   background-color: #222;
 `;
@@ -39,6 +42,17 @@ const StyledNav = styled.nav`
     padding: 0;
   }
 `;
+const Wrapper2 = styled.div`
+  display: block;
+  color:#aaa;
+  text-decoration:none;
+  padding: 10px 0;
+  @media screen and (min-width: 768px) {
+    padding:0;
+  }
+  cursor: pointer;
+`;
+
 const NavLink = styled(Link)`
   display: block;
   color:#aaa;
@@ -65,6 +79,12 @@ const NavButton = styled.button`
 export default function Header() {
   const {cartProducts} = useContext(CartContext);
   const [mobileNavActive,setMobileNavActive] = useState(false);
+
+
+  const {data: session} = useSession();
+
+  
+
   return (
     <StyledHeader>
       <Center>
@@ -74,8 +94,15 @@ export default function Header() {
             <NavLink href={'/'}>Home</NavLink>
             <NavLink href={'/products'}>All products</NavLink>
             <NavLink href={'/categories'}>Categories</NavLink>
-            <NavLink href={'/account'}>Account</NavLink>
             <NavLink href={'/cart'}>Cart ({cartProducts.length})</NavLink>
+
+
+            <Wrapper2  onClick={!session ? signIn : signOut}  >
+              
+                {session ? `hello, ${session.user.name}` : 'Sign In' }
+             
+            </Wrapper2>
+            
           </StyledNav>
           <NavButton onClick={() => setMobileNavActive(prev => !prev)}>
             <BarsIcon />

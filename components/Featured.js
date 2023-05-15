@@ -59,7 +59,8 @@ const ButtonsWrapper = styled.div`
 export default function Featured({product}) {
   const {addProduct} = useContext(CartContext);
   function addFeaturedToCart() {
-    addProduct(product._id);
+    if(product)addProduct(product._id);
+    
   }
   return (
     <Bg>
