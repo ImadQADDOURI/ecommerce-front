@@ -80,7 +80,7 @@ export default function Featured({product}) {
             </div>
           </Column>
           <Column>
-            <img src="https://dawid-next-ecommerce.s3.amazonaws.com/1679151719649.png" alt=""/>
+            <img  src={product?.images?.[0]} alt=""/>
           </Column>
         </ColumnsWrapper>
       </Center>
