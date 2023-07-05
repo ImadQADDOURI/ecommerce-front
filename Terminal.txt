@@ -19,3 +19,6 @@
     
     > yarn add next-auth
     > yarn add next-auth @next-auth/mongodb-adapter mongodb
+
+
+    > yarn add nodemailer

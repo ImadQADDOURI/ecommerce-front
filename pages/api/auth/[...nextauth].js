@@ -1,6 +1,9 @@
 import NextAuth, {getServerSession} from 'next-auth'
 import GoogleProvider from 'next-auth/providers/google'
 import GitHubProvider from "next-auth/providers/github";
+import FacebookProvider from "next-auth/providers/facebook";
+import TwitterProvider from "next-auth/providers/twitter"
+import EmailProvider from "next-auth/providers/email"
 import {MongoDBAdapter} from "@next-auth/mongodb-adapter";
 import clientPromise from "@/lib/mongodb";
 
@@ -9,12 +12,15 @@ import clientPromise from "@/lib/mongodb";
 export const authOptions = {
   secret: process.env.SECRET,
   providers: [
+    EmailProvider({}),
     GoogleProvider({
       clientId: process.env.GOOGLE_ID,
       clientSecret: process.env.GOOGLE_SECRET
     }),
-    GitHubProvider({
-    })
+    FacebookProvider({}),
+    TwitterProvider({}),
+    GitHubProvider({})
+    
   ],
   adapter: MongoDBAdapter(clientPromise),
   
