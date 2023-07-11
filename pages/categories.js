@@ -65,8 +65,8 @@ console.log(categories);
 
         <Myol >
           {categories.length > 0 && categories.map(category => (
-            <Myli >
-            <CategoryButton>
+            <Myli key={category._id} >
+            <CategoryButton >
             {category.name}
            </CategoryButton>
             </Myli>
