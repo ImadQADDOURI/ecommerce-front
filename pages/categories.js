@@ -4,7 +4,8 @@ import Center from "@/components/Center";
 import {mongooseConnect} from "@/lib/mongoose";
 import { Category } from '@/models/Category';import ProductsGrid from "@/components/ProductsGrid";
 import Title from "@/components/Title";
-
+import { useRouter } from 'next/router';
+import {useState} from "react";
 
 
 const CategoryButton = styled.button`
@@ -53,6 +54,16 @@ const Myli = styled.li`
 
 export default function CategoriesPage({categories}) {
 
+  const router = useRouter();
+  const [category, setCategory] = useState({ name: 'Electronics', id: 1 });
+
+  const handleCategorySelect = (category) => {
+    setCategory(category);
+    router.push({
+      pathname: '/categoryProducts',
+      query: { category: JSON.stringify(category) }
+    });  
+  };
 
 console.log(categories);
   return (
@@ -65,9 +76,11 @@ console.log(categories);
 
         <Myol >
           {categories.length > 0 && categories.map(category => (
-            <Myli key={category._id} >
+            <Myli key={category._id} onClick={() => handleCategorySelect(category)}>
             <CategoryButton >
+      
             {category.name}
+      
            </CategoryButton>
             </Myli>
               

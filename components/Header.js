@@ -89,7 +89,7 @@ export default function Header() {
     <StyledHeader>
       <Center>
         <Wrapper>
-          <Logo href={'/'}>TechTopia</Logo>
+          <Logo href={'/'}>TopTech</Logo>
           <StyledNav mobileNavActive={mobileNavActive}>
             <NavLink href={'/'}>Home</NavLink>
             <NavLink href={'/products'}>All products</NavLink>
