@@ -106,6 +106,7 @@ const SearchButton = styled.button`
   right: 0px;
   transform: translateY(-50%);
   padding: 0px;
+  margin: 0%;
   border: none;
   background-color: transparent;
   cursor: pointer;
