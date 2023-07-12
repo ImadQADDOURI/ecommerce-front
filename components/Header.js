@@ -22,6 +22,8 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 20px 0;
+  align-items: center; /* Add this line to align items vertically */
+  
 `;
 const StyledNav = styled.nav`
   ${props => props.mobileNavActive ? `
@@ -146,7 +148,7 @@ export default function Header() {
       <Center>
         <Wrapper>
           <Logo href={'/'}>TopTech</Logo>
-<StyledNav mobileNavActive={mobileNavActive}>
+
                   <SearchContainer>
                 <form onSubmit={handleSearchSubmit}>
                   <SearchBar type="text" name="search" placeholder="Search for products" onChange={handleSearch} />
@@ -158,7 +160,7 @@ export default function Header() {
                 </form>
               </SearchContainer>
 
-          
+          <StyledNav mobileNavActive={mobileNavActive}>
             <NavLink href={'/'}>Home</NavLink>
             <NavLink href={'/products'}>All products</NavLink>
             <NavLink href={'/categories'}>Categories</NavLink>
