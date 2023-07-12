@@ -6,6 +6,7 @@ import {CartContext} from "@/components/CartContext";
 import BarsIcon from "@/components/icons/Bars";
 
 import { useSession, signIn, signOut } from "next-auth/react";
+import { useRouter } from 'next/router';
 
 
 const StyledHeader = styled.header`
@@ -76,13 +77,67 @@ const NavButton = styled.button`
   }
 `;
 
+
+
+
+
+
+
+const SearchContainer = styled.div`
+  position: relative;
+  margin-left: 20px; margin-right: 20px;
+  flex-grow: 1;
+
+  
+`;
+
+const SearchBar = styled.input`
+  width: 100%;
+  padding: 5px; padding-right:0px;
+  border: none;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #000;
+`;
+
+const SearchButton = styled.button`
+  position: absolute;
+  top: 50%;
+  right: 0px;
+  transform: translateY(-50%);
+  padding: 0px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+`;
+
+const SearchIcon = styled.svg`
+  width: 20px;
+  height: 20px;
+`;
+
+
+
+
+
 export default function Header() {
   const {cartProducts} = useContext(CartContext);
   const [mobileNavActive,setMobileNavActive] = useState(false);
-
-
   const {data: session} = useSession();
 
+
+
+  const router = useRouter();
+  const handleSearch = (event) => {
+    const searchTerm = event.target.value;
+    // Implement your search functionality here
+  };
+
+  const handleSearchSubmit = (event) => {
+    event.preventDefault();
+    const searchTerm = event.target.search.value;
+    router.push(`/searchPage?search=${encodeURIComponent(searchTerm)}`);
+  };
   
 
   return (
@@ -90,6 +145,18 @@ export default function Header() {
       <Center>
         <Wrapper>
           <Logo href={'/'}>TopTech</Logo>
+
+                  <SearchContainer>
+                <form onSubmit={handleSearchSubmit}>
+                  <SearchBar type="text" name="search" placeholder="Search for products" onChange={handleSearch} />
+                  <SearchButton type="submit">
+                    <SearchIcon xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                    </SearchIcon>
+                  </SearchButton>
+                </form>
+              </SearchContainer>
+
           <StyledNav mobileNavActive={mobileNavActive}>
             <NavLink href={'/'}>Home</NavLink>
             <NavLink href={'/products'}>All products</NavLink>

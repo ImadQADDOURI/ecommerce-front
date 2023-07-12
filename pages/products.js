@@ -13,6 +13,7 @@ export default function ProductsPage({products}) {
       <Center>
         <Title>All products</Title>
         <ProductsGrid products={products} />
+        <br /><br />
       </Center>
     </>
   );

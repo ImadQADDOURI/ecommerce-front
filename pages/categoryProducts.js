@@ -43,7 +43,7 @@ export default function ProductsPage({ products, parsedCategory }) {
       <>
         <Header />
         <Center>
-          <Title>{parsedCategory.name} Products :</Title>
+          <Title>{parsedCategory.name} Products </Title>
           <ProductsGrid products={products} />
         </Center>
       </>
