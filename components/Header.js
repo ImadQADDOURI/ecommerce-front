@@ -85,7 +85,7 @@ const NavButton = styled.button`
 
 const SearchContainer = styled.div`
   position: relative;
-  margin-left: 20px; margin-right: 20px;
+  margin-left: 20px; margin-right: 10px;
   flex-grow: 1;
 
   
@@ -146,7 +146,7 @@ export default function Header() {
       <Center>
         <Wrapper>
           <Logo href={'/'}>TopTech</Logo>
-
+<StyledNav mobileNavActive={mobileNavActive}>
                   <SearchContainer>
                 <form onSubmit={handleSearchSubmit}>
                   <SearchBar type="text" name="search" placeholder="Search for products" onChange={handleSearch} />
@@ -158,7 +158,7 @@ export default function Header() {
                 </form>
               </SearchContainer>
 
-          <StyledNav mobileNavActive={mobileNavActive}>
+          
             <NavLink href={'/'}>Home</NavLink>
             <NavLink href={'/products'}>All products</NavLink>
             <NavLink href={'/categories'}>Categories</NavLink>
