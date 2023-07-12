@@ -13,10 +13,22 @@ const StyledHeader = styled.header`
   background-color: #222;
 `;
 const Logo = styled(Link)`
-  color:#fff;
-  text-decoration:none;
+  
+  color: white;
+  text-decoration: none;
   position: relative;
   z-index: 3;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 30px;
+  letter-spacing: 0px;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  transition: transform 0.3s ease-in-out;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 `;
 const Wrapper = styled.div`
   display: flex;
@@ -47,15 +59,52 @@ const StyledNav = styled.nav`
 `;
 const Wrapper2 = styled.div`
   display: block;
-  color:#aaa;
-  text-decoration:none;
+  color: #aaa;
+  text-decoration: none;
   padding: 10px 0;
   @media screen and (min-width: 768px) {
-    padding:0;
+    padding: 0;
   }
   cursor: pointer;
-`;
+  position: relative;
 
+  ${props =>
+    props.session &&
+    `
+    &:hover::after {
+      content: 'Logout';
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #000000;
+      color: #ffffff;
+      padding: 6px 12px;
+      font-size: 14px;
+      border-radius: 4px;
+      white-space: nowrap;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+    }
+
+    &:hover::before {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 6px solid transparent;
+      border-top-color: #000000;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+    }
+
+    &:hover::after,
+    &:hover::before {
+      opacity: 1;
+    }
+  `}
+`;
 const NavLink = styled(Link)`
   display: block;
   color:#aaa;
@@ -80,11 +129,6 @@ const NavButton = styled.button`
 `;
 
 
-
-
-
-
-
 const SearchContainer = styled.div`
   position: relative;
   margin-left: 20px; margin-right: 10px;
@@ -92,7 +136,6 @@ const SearchContainer = styled.div`
 
   
 `;
-
 const SearchBar = styled.input`
   width: 100%;
   padding: 5px; padding-right:0px;
@@ -101,7 +144,6 @@ const SearchBar = styled.input`
   background-color: #fff;
   color: #000;
 `;
-
 const SearchButton = styled.button`
   position: absolute;
   top: 50%;
@@ -113,15 +155,10 @@ const SearchButton = styled.button`
   background-color: transparent;
   cursor: pointer;
 `;
-
 const SearchIcon = styled.svg`
   width: 20px;
   height: 20px;
 `;
-
-
-
-
 
 export default function Header() {
   const {cartProducts} = useContext(CartContext);
@@ -147,7 +184,7 @@ export default function Header() {
     <StyledHeader>
       <Center>
         <Wrapper>
-          <Logo href={'/'}>TopTech</Logo>
+          <Logo href={'/'}>Top⚡Tech</Logo>
 
                   <SearchContainer>
                 <form onSubmit={handleSearchSubmit}>
@@ -162,14 +199,14 @@ export default function Header() {
 
           <StyledNav mobileNavActive={mobileNavActive}>
             <NavLink href={'/'}>Home</NavLink>
-            <NavLink href={'/products'}>All products</NavLink>
+            <NavLink href={'/products'}>Products</NavLink>
             <NavLink href={'/categories'}>Categories</NavLink>
-            <NavLink href={'/cart'}>Cart ({cartProducts.length})</NavLink>
+            <NavLink href={'/cart'}>Cart({cartProducts.length})</NavLink>
 
 
-            <Wrapper2  onClick={!session ? signIn : signOut}  >
+            <Wrapper2 session={session} onClick={!session ? signIn : signOut}  >
               
-                {session ? `hello, ${session.user.name}` : 'Sign In' }
+                {session ? `${session.user.name}` : 'Sign In' }
              
             </Wrapper2>
             
