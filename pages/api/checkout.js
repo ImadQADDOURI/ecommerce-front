@@ -19,24 +19,36 @@ export default async function handler(req,res) {
   const productsInfos = await Product.find({_id:uniqueIds});
 
   let line_items = [];
+  let totalPrice = 0;
   for (const productId of uniqueIds) {
     const productInfo = productsInfos.find(p => p._id.toString() === productId);
+    
     const quantity = productsIds.filter(id => id === productId)?.length || 0;
+
+    console.log(productInfo.price,quantity);
+
     if (quantity > 0 && productInfo) {
+      
+      const unitAmountUSD = productInfo.price; // Price in USD
+
+
       line_items.push({
         quantity,
         price_data: {
           currency: 'USD',
           product_data: {name:productInfo.title},
-          unit_amount: quantity * productInfo.price,
+          unit_amount: unitAmountUSD * 100, // you should ensure that the unit_amount is provided in the smallest currency unit (e.g., cents) when creating the line items for Stripe. Since Stripe expects the amount to be in the smallest currency unit, you need to convert the price from dollars to cents.
         },
       });
+
+      totalPrice += quantity * unitAmountUSD; // Calculate the total price in USD
+
     }
   }
 
   const orderDoc = await Order.create({
     line_items,name,email,city,postalCode,
-    streetAddress,country,paid:false,
+    streetAddress,country,paid:false,totalPrice
   });
 
   const session = await stripe.checkout.sessions.create({
