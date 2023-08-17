@@ -9,6 +9,11 @@ import Table from "@/components/Table";
 import Input from "@/components/Input";
 import Footer from "@/components/Footer";
 
+
+
+
+
+
 const ColumnsWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr;
@@ -129,6 +134,7 @@ export default function CartPage() {
             </Box>
           </ColumnsWrapper>
         </Center>
+        <Footer/>
       </>
     );
   }

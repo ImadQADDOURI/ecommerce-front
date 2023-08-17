@@ -5,12 +5,13 @@ import Link from "next/link";
 const StyledFooter = styled.footer`
   background-color: #222;
   color: white;
+  margin-top: 50px; /* Add margin to create space between content and footer */
+  padding: 40px 0;
 `;
 
 const FooterContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto;
-  padding: 40px 20px; /* Adjusted padding for top and bottom */
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 50px;
