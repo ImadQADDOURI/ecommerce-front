@@ -22,3 +22,6 @@
 
 
     > yarn add nodemailer
+
+
+    > yarn add  @fortawesome/fontawesome-free react-icons
