@@ -6,6 +6,7 @@ import { Category } from '@/models/Category';import ProductsGrid from "@/compone
 import Title from "@/components/Title";
 import { useRouter } from 'next/router';
 import {useState} from "react";
+import Footer from "@/components/Footer";
 
 
 const CategoryButton = styled.button`
@@ -89,7 +90,7 @@ console.log(categories);
           </Myol>
           
       </Center>
-    
+      <Footer/>
     </>
   );
 }
