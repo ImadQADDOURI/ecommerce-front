@@ -10,6 +10,7 @@ import Button from "@/components/Button";
 import CartIcon from "@/components/icons/CartIcon";
 import {useContext} from "react";
 import {CartContext} from "@/components/CartContext";
+import Footer from "@/components/Footer";
 
 const ColWrapper = styled.div`
   display: grid;
@@ -55,6 +56,7 @@ export default function ProductPage({product}) {
           </div>
         </ColWrapper>
       </Center>
+      <Footer/>
     </>
   );
 }
