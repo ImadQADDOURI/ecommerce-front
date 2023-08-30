@@ -26,8 +26,8 @@ const CustomArrow = styled.div`
   transform: translateY(-50%);
  /* background-color: #666666; /* Gray background color */
   color: white;
-  width: 50px; /* Increase the button width */
-  height: 50px; /* Increase the button height */
+  width: 100px; /* Increase the button width */
+  height: 100px; /* Increase the button height */
   display: flex;
   align-items: center;
   justify-content: center;
