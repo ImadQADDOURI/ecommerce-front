@@ -2,3 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 
+.slick-prev,
+.slick-next {
+  font-size: 24px;
+  line-height: 1;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #f39c12;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+/* Apply hover effect */
+.slick-prev:hover,
+.slick-next:hover {
+  background-color: #e67e22;
+}
+
+/* Adjust position of the next button */
+.slick-next {
+  right: 0;
+}

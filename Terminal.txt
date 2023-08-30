@@ -25,3 +25,5 @@
 
 
     > yarn add  @fortawesome/fontawesome-free react-icons
+
+    > yarn add react-slick slick-carousel

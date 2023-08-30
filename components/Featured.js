@@ -29,7 +29,7 @@ const ColumnsWrapper = styled.div`
   gap: 40px;
   img{
     max-width: 100%;
-    max-height: 400px;
+    max-height: 600px;
     display: block;
     margin: 0 auto;
   }
